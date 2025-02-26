@@ -1,0 +1,164 @@
+/* CSS optimisé et centré pour le parc d'attraction */
+
+mat-card {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  margin: 24px auto;
+  max-width: 1000px; /* Réduction de la largeur maximale pour un meilleur centrage */
+  background-color: #fff;
+}
+
+mat-card-header {
+  background: linear-gradient(135deg, #4b59c0, #5e54a8);
+  color: white;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+mat-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0;
+  letter-spacing: -0.5px;
+}
+
+mat-card-content {
+  padding: 0 20px 20px;
+  max-width: 100%;
+}
+
+.attraction-title {
+  background-color: #4b59c0;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  margin: 25px auto 15px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(75, 89, 192, 0.2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.attraction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espace égal entre les éléments */
+  width: 100%;
+  border-bottom: solid 1px #e0e0e0;
+  padding: 16px 10px;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.attraction:hover {
+  background-color: #f5f5f5;
+}
+
+.attraction span {
+  padding: 8px;
+  flex: 1; /* Distribution flexible de l'espace */
+  text-align: left;
+  line-height: 1.4;
+}
+
+.attraction span:nth-child(1) {
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+}
+
+.attraction span:nth-child(2) {
+  flex: 2; /* Plus d'espace pour la description */
+  font-size: 14px;
+  color: #666;
+}
+
+.attraction span:nth-child(3) {
+  flex: 0.8;
+  text-align: center;
+  font-weight: 500;
+}
+
+.attraction span:nth-child(4) {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Centrer le bouton */
+}
+
+/* Style pour chaque niveau de difficulté */
+.attraction[ng-reflect-ng-if="true"]:nth-child(odd) {
+  background-color: rgba(75, 89, 192, 0.05);
+}
+
+/* Style pour le bouton */
+.attraction button {
+  border-radius: 20px;
+  padding: 0 16px;
+  height: 36px;
+  font-weight: 500;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 180px; /* Largeur fixe pour les boutons */
+  margin: 0 auto; /* Centrer les boutons */
+}
+
+.attraction button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  background-color: #3f51b5;
+  color: white;
+}
+
+/* Ajout d'éléments responsifs */
+@media (max-width: 960px) {
+  .attraction {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .attraction span {
+    width: calc(50% - 20px);
+    flex: none;
+  }
+
+  .attraction span:nth-child(3) {
+    width: calc(50% - 20px);
+    text-align: left;
+    flex: none;
+  }
+
+  .attraction span:nth-child(4) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .attraction span {
+    width: 100%;
+    flex: none;
+  }
+
+  .attraction span:nth-child(3) {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* Style pour le conteneur principal */
+.champ {
+  padding: 8px;
+  margin-top: 21.5px;
+  width: 100%;
+  text-align: center;
+}

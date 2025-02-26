@@ -1,0 +1,183 @@
+/* CSS modernisé pour la section commentaires */
+
+.comments-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Style du formulaire de commentaire */
+.comment-form {
+  margin-bottom: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+}
+
+.comment-form:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.comment-form mat-card-header {
+  background: linear-gradient(135deg, #4b59c0, #5e54a8);
+  color: white;
+  padding: 1.5rem;
+}
+
+.comment-form mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.comment-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Style des champs de formulaire */
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.mat-focused .mat-form-field-label {
+  color: #4b59c0;
+}
+
+.mat-form-field-underline {
+  background-color: #e0e0e0;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Style du bouton */
+.comment-form button[type="submit"] {
+  align-self: flex-end;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #4b59c0, #5e54a8);
+  box-shadow: 0 4px 8px rgba(75, 89, 192, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.comment-form button[type="submit"]:hover {
+  box-shadow: 0 6px 12px rgba(75, 89, 192, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Section de la liste des commentaires */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comments-list mat-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.comments-list mat-card-header {
+  background-color: #f5f7ff;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.comments-list mat-card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.comments-list mat-card-content {
+  padding: 1.5rem;
+}
+
+/* Style des commentaires individuels */
+.critique {
+  margin-bottom: 1.25rem;
+}
+
+.critique:last-child {
+  margin-bottom: 0;
+}
+
+.critique mat-card {
+  border-radius: 10px;
+  border-left: 4px solid #4b59c0;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.critique mat-card:hover {
+  transform: translateX(3px);
+}
+
+.critique mat-card-header {
+  background-color: transparent;
+  padding: 1rem 1.25rem 0.5rem;
+  border-bottom: none;
+}
+
+.critique mat-card-title {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Style d'affichage de la note */
+.critique mat-card-title::after {
+  content: "";
+  margin-left: 0.75rem;
+  height: 4px;
+  flex: 1;
+  background: linear-gradient(to right, #4b59c0 var(--note-percent, 70%), #e0e0e0 var(--note-percent, 70%));
+  border-radius: 2px;
+}
+
+.critique mat-card-content {
+  padding: 0.5rem 1.25rem 1.25rem;
+}
+
+.critique p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+
+/* Styles responsifs */
+@media (max-width: 600px) {
+  .comments-container {
+    padding: 1rem;
+  }
+
+  .comment-form mat-card-header,
+  .comments-list mat-card-header {
+    padding: 1rem;
+  }
+
+  .comment-form form {
+    padding: 1rem;
+  }
+
+  .comment-form button[type="submit"] {
+    width: 100%;
+  }
+}

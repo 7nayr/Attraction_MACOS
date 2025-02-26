@@ -1,0 +1,2 @@
+GET http://127.0.0.1:5006/attraction HTTP/1.1
+Authorization: "Token 1234azerty"

@@ -1,0 +1,66 @@
+<div class="comments-container">
+  <!-- Add new comment form -->
+  <mat-card class="comment-form">
+    <mat-card-header>
+      <mat-card-title>Ajouter votre avis</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="submitCritique()">
+        <mat-form-field appearance="fill">
+          <mat-label>Note (0-5)</mat-label>
+          <input
+            matInput
+            type="number"
+            min="0"
+            max="5"
+            [(ngModel)]="newCritique.note"
+            name="note"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Votre commentaire</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="newCritique.commentaire"
+            name="commentaire"
+            required
+            placeholder="Partagez votre expérience..."
+          ></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Poster le commentaire
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Display existing comments -->
+  <div class="comments-list">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Commentaires</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="(critiques | async)?.length === 0">
+          Aucun commentaire pour cette attraction.
+        </div>
+
+        <ng-container *ngIf="critiques | async as critiquesList">
+          <div *ngFor="let critique of critiquesList" class="critique">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Note: {{ critique.note }}/5</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{ critique.commentaire }}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

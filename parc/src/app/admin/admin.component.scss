@@ -1,0 +1,26 @@
+.attraction-title {
+  font-size: 18px;
+  font-weight: 500;
+  background-color: darkgrey;
+  width: fit-content;
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.attraction {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+  width: fit-content;
+  border-bottom: solid 1px grey;
+  padding: 10px 0;
+  span {
+    padding: 5px;
+    width: 250px;
+  }
+  .champ {
+    padding: 5px;
+    margin-top: 21.5px;
+    width: 250px;
+  }
+}
