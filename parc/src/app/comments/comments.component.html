@@ -44,22 +44,21 @@
         <mat-card-title>Commentaires</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div *ngIf="(critiques | async)?.length === 0">
+        <!-- Modifié pour utiliser directement critiquesList -->
+        <div *ngIf="critiquesList.length === 0">
           Aucun commentaire pour cette attraction.
         </div>
 
-        <ng-container *ngIf="critiques | async as critiquesList">
-          <div *ngFor="let critique of critiquesList" class="critique">
-            <mat-card>
-              <mat-card-header>
-                <mat-card-title>Note: {{ critique.note }}/5</mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ critique.commentaire }}</p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </ng-container>
+        <div *ngFor="let critique of critiquesList" class="critique">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Note: {{ critique.note }}/5</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ critique.commentaire }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

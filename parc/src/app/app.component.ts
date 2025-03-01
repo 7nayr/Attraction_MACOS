@@ -16,7 +16,8 @@ export class AppComponent {
   title = 'parc';
 
   constructor(public authService: AuthService, public router: Router) {
-    this.authService.setUser()
+    // If you have another method for initializing user like getCurrentUser() or checkAuthState()
+    // this.authService.getCurrentUser();
   }
 
   logout() {

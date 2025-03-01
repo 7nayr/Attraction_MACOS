@@ -47,7 +47,19 @@ def get_all_critiques():
         cur.execute(requete)
         records = cur.fetchall()
         conn.close()
-        return jsonify(records)
+        
+        # Convertir les tuples en dictionnaires
+        critiques = []
+        for row in records:
+            critiques.append({
+                "critique_id": row[0],
+                "note": row[1],
+                "commentaire": row[2],
+                "attraction_id": row[3],
+                "user_id": row[4]
+            })
+        
+        return jsonify(critiques)
     except Exception as e:
         print(e, flush=True)
         return jsonify([])
@@ -55,36 +67,53 @@ def get_all_critiques():
 def get_critiques_by_attraction(attraction_id):
     try:
         cur, conn = req.get_db_connection()
-        requete = "SELECT critique_id, note, commentaire, attraction_id, user_id FROM critiques WHERE attraction_id = %s;"
+        # CORRECTION: Utilisez des ? comme placeholder et non %s
+        # CORRECTION: Ne pas utiliser de tuple pour un seul paramètre
+        requete = "SELECT critique_id, note, commentaire, attraction_id, user_id FROM critiques WHERE attraction_id = ?;"
         cur.execute(requete, (attraction_id,))
         records = cur.fetchall()
         conn.close()
 
         # Format the response as a list of dictionaries
-        critiques = [
-            {
+        critiques = []
+        for row in records:
+            critiques.append({
                 "critique_id": row[0],
                 "note": row[1],
                 "commentaire": row[2],
                 "attraction_id": row[3],
                 "user_id": row[4]
-            }
-            for row in records
-        ]
+            })
+        
+        # Debug: afficher les critiques trouvées
+        print(f"Critiques trouvées pour l'attraction {attraction_id}: {critiques}", flush=True)
+        
         return jsonify(critiques)
     except Exception as e:
-        print(e, flush=True)
+        print(f"Erreur lors de la récupération des critiques: {e}", flush=True)
         return jsonify([])
 
 
 def get_critique(index):
     try:
         cur, conn = req.get_db_connection()
-        requete = "SELECT * FROM critiques WHERE critique_id = %s;"
+        requete = "SELECT * FROM critiques WHERE critique_id = ?;"
         cur.execute(requete, (index,))
         records = cur.fetchall()
         conn.close()
-        return jsonify(records[0] if records else None)
+        
+        if records:
+            row = records[0]
+            critique = {
+                "critique_id": row[0],
+                "note": row[1],
+                "commentaire": row[2],
+                "attraction_id": row[3],
+                "user_id": row[4]
+            }
+            return jsonify(critique)
+        else:
+            return jsonify(None)
     except Exception as e:
         print(e, flush=True)
         return jsonify(None)
@@ -92,7 +121,7 @@ def get_critique(index):
 def delete_critique(index):
     try:
         cur, conn = req.get_db_connection()
-        requete = "DELETE FROM critiques WHERE critique_id = %s;"
+        requete = "DELETE FROM critiques WHERE critique_id = ?;"
         cur.execute(requete, (index,))
         conn.commit()
         conn.close()

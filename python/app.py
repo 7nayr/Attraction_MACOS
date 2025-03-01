@@ -71,14 +71,15 @@ def login():
         "name": json['name']
     }), 200
 
-# 📝 Routes Critiques (Commentaires)
+# 📝 Routes Critiques (Commentaires) - MODIFICATION: suppression de la vérification d'authentification
 @app.post('/critique')
 def addCritique():
     print("Requête reçue pour ajouter une critique", flush=True)
 
-    checkToken = user.check_token(request)
-    if checkToken is not True:
-        return checkToken
+    # MODIFICATION: Commenté la vérification du token pour permettre l'ajout de commentaires sans authentification
+    # checkToken = user.check_token(request)
+    # if checkToken is not True:
+    #     return checkToken
 
     json = request.get_json()
 
